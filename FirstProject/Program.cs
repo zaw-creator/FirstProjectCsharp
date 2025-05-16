@@ -66,14 +66,17 @@ namespace FirstProject
             //printeachchar(input);
 
             //9 summary of array numbers
-            summaryofarray();
+            //summaryofarray();
 
             //10 create and use multiple instance of a class 
-        
-             callingperson();
-            callingperson();
-            callingperson();
+
+            // callingperson();
+            //callingperson();
+            //callingperson();
             //:)) maybe this is the real solution for this task
+
+            //11 refactor the calling person method to add the authentication for the name and age
+            callingpersonrefactor();
 
 
 
@@ -185,6 +188,37 @@ namespace FirstProject
             Console.WriteLine("enter the person age ");
             p.Age = int.Parse(Console.ReadLine());
             p.Display();
+        }
+
+        static void callingpersonrefactor()
+        {
+            Person p = new Person();
+            Console.WriteLine("enter the person name ");
+            string nameinput = Console.ReadLine();
+
+            if(string.IsNullOrEmpty(nameinput))
+            {
+                Console.WriteLine("Name cannot be empty");
+                return;
+            }
+            p.Name = nameinput;
+            Console.WriteLine("enter the person age ");
+            string ageinput = Console.ReadLine();
+            if(int.TryParse(ageinput, out int age))
+            {
+                if(age <0 || age > 100)
+                {
+                    Console.WriteLine("Age must be between 0 and 100");
+                    return;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid age input");
+                return;
+            }
+            p.Age = age;
+
         }
 
         static void printevennumbers(int[] numbers)

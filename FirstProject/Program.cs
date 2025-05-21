@@ -11,121 +11,102 @@ namespace FirstProject
         static void Main(string[] args)
         {
             // 1st
-            //for( int i =1;i <11;i++)
-            // {
-            //     Console.WriteLine(i);
-            // }
-            // Console.ReadLine();
-
+            //for (int i = 1; i < 11; i++)
+            //{
+            //    Console.WriteLine(i);
+            //}
+            //Console.ReadLine();
 
             //2
             // 3 -> 1 + 2 + 3
             //key take away cant return a value inside a void method
-
 
             //Console.WriteLine("Enter any Numbers");
 
             //int num = Convert.ToInt32(Console.ReadLine());
             //int sum = 0;
 
-            //for (int i = 1;i <= num; i++)
+            //for (int i = 1; i <= num; i++)
             //{
             //    //Console.WriteLine(i);
 
             //    sum = sum + i;
-
-
             //}
             //Console.WriteLine("Sum of the enter numbers " + sum);
             //Console.ReadLine();
 
             //3
-            //reverseastring();
+            //ReverseAString();
 
             //4
             //key take away: use the for each with char to convert a string to char array
             // also use the tostring to convert a char to string
 
-            //vowelcount();
+            //VowelCount();
 
             //5
-            //largestnumber();
+            //LargestNumber();
 
             //6
-            //callingperson();
+            //CallingPerson();
 
             //7
-            //// refacotr - pass the arguments to the method to print the even numbers and this make the code more reusable
+            //// refactor - pass the arguments to the method to print the even numbers and this make the code more reusable
             //int[] numbers = { 3, 6, 9, 12, 15 };
-            //printevennumbers(numbers);
+            //PrintEvenNumbers(numbers);
 
             //8
             //Console.WriteLine("ENTER ANY WORDS");
             //string input = Console.ReadLine();
 
-            //printeachchar(input);
+            //PrintEachChar(input);
 
             //9 summary of array numbers
-            //summaryofarray();
+            //SummaryOfArray();
 
             //10 create and use multiple instance of a class 
 
-            // callingperson();
-            //callingperson();
-            //callingperson();
+            // CallingPerson();
+            //CallingPerson();
+            //CallingPerson();
             //:)) maybe this is the real solution for this task
 
             //11 refactor the calling person method to add the authentication for the name and age
-            callingpersonrefactor();
-
-
-
-
-
-
-
-
-
-
-
+            CallingPersonRefactor();
         }
-        static void reverseastring()
+
+        static void ReverseAString()
         {
             Console.WriteLine("Enter any words to reverse!!");
-            string inputfromuser = Console.ReadLine();
-            char[] reverse = inputfromuser.ToCharArray();
+            string inputFromUser = Console.ReadLine();
+            char[] reverse = inputFromUser.ToCharArray();
             Array.Reverse(reverse);
 
             Console.WriteLine("reverse string : " + new string(reverse));
-
-
         }
 
-        static void vowelcount()
+        static void VowelCount()
         {
-           Console.WriteLine("Enter any words to count vowels!!");
-            string userinput = Console.ReadLine().ToLower();
+            Console.WriteLine("Enter any words to count vowels!!");
+            string userInput = Console.ReadLine().ToLower();
             string[] vowels = { "a", "e", "i", "o", "u" };
-
 
             int count = 0;
 
             foreach (string vowel in vowels)
             {
-                foreach(char i in userinput)
+                foreach (char c in userInput)
                 {
-                    if(i.ToString() == vowel)
+                    if (c.ToString() == vowel)
                     {
                         count++;
                     }
                 }
             }
-            Console.WriteLine("Vowels count : "+ count);
-
-
-
+            Console.WriteLine("Vowels count : " + count);
         }
-        static void largestnumber()
+
+        static void LargestNumber()
         {
             int[] nums = { 4, 7, 1, 12, 9 };
 
@@ -133,43 +114,26 @@ namespace FirstProject
 
             foreach (int num in nums)
             {
-                if(num > max)
+                if (num > max)
                 {
                     max = num;
-
-                   
                 }
-               
             }
             Console.WriteLine("largest number is " + max);
-
-
-
-
-
         }
 
-    
-
-        public class Person {
+        public class Person
+        {
             public string Name { get; set; }
             public int Age { get; set; }
 
             public void Display()
-
-            //in here have to use the public void because This means Display() needs to be an instance method, and not static, so it can access the instance's data (Name, Age).
             {
                 Console.WriteLine($"Name : {Name}, Age: {Age}");
             }
-
-
-
         }
 
-
-        // is a basic step
-
-        //static void callingperson()
+        //static void CallingPerson()
         //{
         //    Person p = new Person();
         //    p.Name = "Alice";
@@ -177,10 +141,7 @@ namespace FirstProject
         //    p.Display();
         //}
 
-        //refactor
-        // can add the authentication like to only accept the string and then to add only the int and not to add the age more than 100 not less than 0 :)
-
-        static void callingperson()
+        static void CallingPerson()
         {
             Person p = new Person();
             Console.WriteLine("enter the person name ");
@@ -190,23 +151,23 @@ namespace FirstProject
             p.Display();
         }
 
-        static void callingpersonrefactor()
+        static void CallingPersonRefactor()
         {
             Person p = new Person();
             Console.WriteLine("enter the person name ");
-            string nameinput = Console.ReadLine();
+            string nameInput = Console.ReadLine();
 
-            if(string.IsNullOrEmpty(nameinput))
+            if (string.IsNullOrEmpty(nameInput))
             {
                 Console.WriteLine("Name cannot be empty");
                 return;
             }
-            p.Name = nameinput;
+            p.Name = nameInput;
             Console.WriteLine("enter the person age ");
-            string ageinput = Console.ReadLine();
-            if(int.TryParse(ageinput, out int age))
+            string ageInput = Console.ReadLine();
+            if (int.TryParse(ageInput, out int age))
             {
-                if(age <0 || age > 100)
+                if (age < 0 || age > 100)
                 {
                     Console.WriteLine("Age must be between 0 and 100");
                     return;
@@ -218,34 +179,30 @@ namespace FirstProject
                 return;
             }
             p.Age = age;
-
+            p.Display();
         }
 
-        static void printevennumbers(int[] numbers)
+        static void PrintEvenNumbers(int[] numbers)
         {
-            
-
-            foreach( int num in numbers)
+            foreach (int num in numbers)
             {
-                if (num%2==0)
+                if (num % 2 == 0)
                 {
-                    
                     Console.WriteLine(num);
-                    
                 }
             }
             Console.ReadLine();
         }
 
-        static void printeachchar(string input)
+        static void PrintEachChar(string input)
         {
-            foreach ( char i in input)
+            foreach (char c in input)
             {
-                Console.WriteLine(i);
+                Console.WriteLine(c);
             }
         }
 
-        static void summaryofarray()
+        static void SummaryOfArray()
         {
             int[] numbers = { 2, 4, 6, 8 };
             int sum = 0;
@@ -254,6 +211,5 @@ namespace FirstProject
                 sum += num;
             }
         }
-
     }
 }
